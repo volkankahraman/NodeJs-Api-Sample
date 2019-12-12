@@ -8,6 +8,7 @@ const middleware = require('./middlewares')
 
 
 const todosRouter = require('./routes/todos')
+const indexRouter = require('./routes/index')
 
 
 let PORT = process.env.PORT;
@@ -19,18 +20,11 @@ middleware(app);
 //Route
 
 app.use('/todos', todosRouter);
+app.use('/', indexRouter);
 
 // Docs
 
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swagger))
-
-let message = {
-    message: "Hello World"
-};
-
-app.get('/test', function (request, response) {
-    response.json(message);
-})
 
 // 404 endpoint
 
@@ -41,12 +35,15 @@ app.use(function (req, res) {
 })
 
 //Error handling
-// res.json({
-//     err: err.message
-// });
+app.use(function (err, req, res, next) {
+    if (err){
+        res.status(500).json({
+            error: "Sunucu hatası "+err
+        })
+    }
+})
 
 // Listening port
-module.exports = app;
 
 app.listen(PORT, function () {
     console.log(`Sunucu ${ PORT } portu üzerinden dinleniyor...

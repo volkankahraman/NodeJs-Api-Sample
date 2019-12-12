@@ -1,7 +1,7 @@
 const express = require('express')
 const shortid = require('shortid')
 const db = require('./../databases/lowdb')
-
+const authorize = require('./../authorization')
 
 const router = express.Router();
 
@@ -39,7 +39,7 @@ router.post('/', function (req, res) {
     res.json({message:'Todo eklendi', todo});
 })
 
-router.put('/:id', function (req, res) {
+router.put('/:id', authorize, function (req, res) {
     db.get('todos')
     .find({
         id: req.params.id
@@ -59,7 +59,7 @@ router.put('/:id', function (req, res) {
 
 })
 
-router.delete('/:id', function (req, res, next) {
+router.delete('/:id', authorize, function (req, res, next) {
     let todo = db.get('todos').find({
         id: req.params.id
     }).value()

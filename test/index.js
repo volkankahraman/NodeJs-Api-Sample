@@ -19,7 +19,7 @@ describe('Todo testi', function() {
 })
 
 describe('Api Testi', function () {
-    it('/todos  04 yanıt veriyor', function (done) {
+    it('/todos  404 yanıt veriyor', function (done) {
 
        request(server)
         .get('/todoss')

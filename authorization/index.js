@@ -7,14 +7,19 @@ function authorize(req, res, next) {
         jwt.verify(token, process.env.TOKEY_KEY, function (err, decoded) {
             if(err){
                 // Yetkisiz istek
-                res.sendStatus(401)
+                res.status(401).json({
+                    error: 'yetkisiz giriş'
+                });
             }else{
                 next()
             }
         })
 
     } else {
-        res.sendStatus(401);
+        // Yetkisiz istek
+        res.status(401).json({
+            error:'yetkisiz giriş'
+        });
     }
 }
 

@@ -9,7 +9,7 @@ router.get('/', function (req, res) {
     })
 })
 
-router.get('/getToken', function (req, res) {
+router.post('/getToken', function (req, res) {
     jwt.sign({data:'token'}, process.env.TOKEY_KEY, function (err,token) {
         if(err){
             next(err);
@@ -20,3 +20,32 @@ router.get('/getToken', function (req, res) {
 })
 
 module.exports = router;
+
+
+/**
+ * @swagger
+ * /:
+ *    get:
+ *      description: ana route
+ *      responses:
+ *        '200':
+ *          description: OK
+ *        '404':
+ *          description: Not Found
+ *        '500':
+ *          description: Internal Error
+ */
+
+/**
+* @swagger
+* /getToken:
+*    post:
+*      description: token döner
+*      responses:
+*        '200':
+*          description: OK
+*        '404':
+*          description: Not Found
+*        '500':
+*          description: Internal Error
+*/

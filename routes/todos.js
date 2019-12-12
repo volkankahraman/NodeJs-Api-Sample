@@ -20,7 +20,7 @@ router.get('/:id', function (req, res) {
     if(todo){
         res.json(todo);
     }else{
-
+        next()
     }
 })
 
@@ -31,7 +31,7 @@ router.post('/', function (req, res) {
         date: new Date(),
         isDone: false
     };
-
+    
     db.get('todos')
     .push(todo)
     .write()
@@ -86,15 +86,74 @@ module.exports = router;
  * @swagger
  * /todos:
  *    get:
+ *      security:
+ *      - bearerAuth: []
  *      description: Yapılacakları listeler
  *      responses:
  *        '200':
  *          description: OK
  *        '404':
  *          description: Not Found
+ *        '401':
+ *          description: Unauthorized
  *        '500':
  *          description: Internal Error
  */
+
+/**
+* @swagger
+* /todos/{id}:
+*    get:
+*      parameters:
+*         - name: id
+*           description: Yapıcalak
+*           in: path 
+*      description: Idye göre yapılacak çeker
+*      responses:
+*        '200':
+*          description: OK
+*        '404':
+*          description: Not Found
+*        '500':
+*          description: Internal Error
+*/
+
+
+/**
+* @swagger
+* /todos/{id}:
+*    put:
+*      parameters:
+*         - name: id
+*           description: Yapıcalak
+*           in: path
+*      description: Idye göre yapılacak çeker
+*      responses:
+*        '200':
+*          description: OK
+*        '404':
+*          description: Not Found
+*        '500':
+*          description: Internal Error
+*/
+
+/**
+* @swagger
+* /todos/{id}:
+*    delete:
+*      parameters:
+*         - name: id
+*           description: Yapıcalak
+*           in: path
+*      description: Idye göre yapılacak çeker
+*      responses:
+*        '200':
+*          description: OK
+*        '404':
+*          description: Not Found
+*        '500':
+*          description: Internal Error
+*/
 
 
 

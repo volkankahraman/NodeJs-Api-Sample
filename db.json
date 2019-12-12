@@ -1,0 +1,26 @@
+{
+  "todos": [
+    {
+      "id": "86V8QMS4",
+      "date": "2019-12-12T20:23:02.178Z",
+      "isDone": false
+    },
+    {
+      "id": "oGgrRDnX",
+      "todo": "Test todo",
+      "date": "2019-12-12T20:23:39.434Z",
+      "isDone": true
+    },
+    {
+      "id": "gi9W14U2",
+      "date": "2019-12-12T20:44:20.381Z",
+      "isDone": false
+    },
+    {
+      "id": "2qL31pRq",
+      "date": "2019-12-12T20:45:12.973Z",
+      "isDone": false
+    }
+  ],
+  "users": []
+}

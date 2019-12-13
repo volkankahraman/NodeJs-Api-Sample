@@ -2,7 +2,7 @@ const expect = require('chai').expect
 const should = require('chai').should()
 const request = require('supertest')
 
-const server = require('./../server')
+const app = require('./../server')
 const db = require('./../databases/lowdb')
 
 describe('Todo testi', function() {
@@ -19,13 +19,16 @@ describe('Todo testi', function() {
 })
 
 describe('Api Testi', function () {
-    it('/todos  404 yanıt veriyor', function (done) {
+    it('/todos  200 OK yanıt veriyor', function (done) {
+        this.timeout(5000);
+        request(app)
+            .get("/todos")
+            .expect(200)
+            .end(function (err, res) {
+                if (err) done(err);
+                else done();
+                process.exit(0);
+            });
 
-       request(server)
-        .get('/todoss')
-        .expect(404, function () {
-            done();
-            process.exit(0);
-        });
     })
 })

@@ -43,9 +43,12 @@ app.use(function (err, req, res, next) {
     }
 })
 
-// Listening port
 
+
+// Listening port
 app.listen(PORT, function () {
     console.log(`Sunucu ${ PORT } portu üzerinden dinleniyor...
-http://localhost:${ PORT }`)
+    http://localhost:${ PORT }`)
 })
+
+module.exports = app;

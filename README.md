@@ -12,3 +12,12 @@ https://nodejs-restapi-example.herokuapp.com/api-docs/
 
 ### Sunum : 
 https://docs.google.com/presentation/d/1g0gyH2sG1JP8P5Ce4jN4-exTvQrnpWoXlCZ8KMqm2sQ/edit?usp=sharing
+
+Projeyi çalıştırmak için;
+```
+  cd NodeJs-Api-Sample
+  
+  npm install
+  
+  npm start
+```

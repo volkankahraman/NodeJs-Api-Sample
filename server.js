@@ -13,6 +13,8 @@ const indexRouter = require('./routes/index')
 
 let PORT = process.env.PORT;
 
+app.use('/public',express.static('public'))
+
 //Middleware
 
 middleware(app);
